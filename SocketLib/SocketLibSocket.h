@@ -3,7 +3,7 @@
 #define SOCKETLIBSOCKET_H
 
 
-#include "BasicLib\BasicLib.h"
+#include "BasicLib/BasicLib.h"
 #include "SocketLibTypes.h"
 #include "SocketLibErrors.h"
 

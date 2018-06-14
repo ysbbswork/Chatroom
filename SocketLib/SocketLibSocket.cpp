@@ -1,4 +1,4 @@
-\
+
 // socket classes: Basic, Data, and Listening.
 
 
@@ -221,7 +221,7 @@ namespace SocketLib
 
 
         int reuse = 1;
-        err = setsockopt( m_sock, SOL_SOCKET, SO_REUSEADDR, 
+        err = setsockopt( m_sock, SOL_SOCKET, SO_REUSEADDR,
                           (char*)(&reuse), sizeof( reuse ) );
         if( err != 0 )
         {
@@ -234,7 +234,7 @@ namespace SocketLib
         memset( &(m_localinfo.sin_zero), 0, 8 );
 
 
-        err = bind( m_sock, (struct sockaddr*)&m_localinfo, 
+        err = bind( m_sock, (struct sockaddr*)&m_localinfo,
             sizeof(struct sockaddr));
         if( err == -1 )
         {
@@ -274,11 +274,11 @@ namespace SocketLib
 
     void ListeningSocket::Close()
     {
-        
+
         Socket::Close();
 
-        
+
         m_listening = false;
     }
 
-} 
+}
