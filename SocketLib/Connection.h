@@ -6,7 +6,7 @@
 #define CONNECTION_H
 
 #include <stack>
-#include "BasicLib\BasicLib.h"
+#include "BasicLib/BasicLib.h"
 #include "SocketLibTypes.h"
 #include "ConnectionManager.h"
 #include "SocketLibSocket.h"
@@ -101,7 +101,7 @@ public:
     }
 
     inline void AddHandler( typename protocol::handler* p_handler )
-    {
+    {   
         if( Handler() )
             Handler()->Leave();
         m_handlerstack.push( p_handler );

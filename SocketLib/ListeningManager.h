@@ -84,7 +84,7 @@ void ListeningManager<protocol, defaulthandler>::AddPort( port p_port )
     lsock.SetBlocking( false );
 
 
-    m_sockets.push_back( lsock );//
+    m_sockets.push_back( lsock );
 
     // ，实现set实现多路复用，对多个接口进行监听也OK
     m_set.AddSocket( lsock );//m_set不是一个set，传进去文件描述符后，这个m_set就是一个用poll的对象，可以返回select结果，但是轮询还是得去socket的vector里进行
@@ -109,9 +109,9 @@ void ListeningManager<protocol, defaulthandler>::Listen()
     DataSocket datasock;
 
   
-    if( m_set.Poll() > 0 )//利用select获得套接字是否有活动的，但不能告诉你具体是哪个在活动。。所以需要下面的遍历
+    if( m_set.Poll() != 0 )//利用select获得套接字是否有活动的，但不能告诉你具体是哪个在活动。。所以需要下面的遍历
     {
-
+        //std::cout<<"poll retunr"<<m_set.Poll()<<std::endl;
         for( size_t s = 0; s < m_sockets.size(); s++ )//将所有接口的监听套接字遍历一遍
         {
 
@@ -121,7 +121,7 @@ void ListeningManager<protocol, defaulthandler>::Listen()
                 {
                     // accept the connection
                     datasock = m_sockets[s].Accept();
-					std::cout << "监听到数据套接字 " << datasock.GetSock() << " 安排进manager了 " << std::endl;
+					std::cout << "get one Socket " << datasock.GetSock() << std::endl;
                     //把监听到的新的活动连接
                     m_manager->NewConnection( datasock );//将某一个监听接口获得的新连接添加到ConnectionManager里
                 }

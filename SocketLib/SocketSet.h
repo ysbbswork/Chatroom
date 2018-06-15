@@ -4,7 +4,7 @@
 #define SOCKETSET_H
 
 
-#include "BasicLib\BasicLib.h"
+#include "BasicLib/BasicLib.h"
 #include "SocketLibTypes.h"
 #include "SocketLibSocket.h"
 #include <set>
@@ -34,8 +34,9 @@ namespace SocketLib
             #ifdef WIN32
                 return select( 0, &m_activityset, 0, 0, &t );
             #else
-                if( m_socketdescs.size() == 0 ) return 0;
-                return select( *(m_socketdescs.rbegin()), &m_activityset, 0, 0, &t );
+		
+                if( m_socketdescs.size() == 0 ) {return 0;};
+                return select( *(m_socketdescs.rbegin())+1, &m_activityset, 0, 0, &t );
             #endif
         }
 

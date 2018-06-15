@@ -17,4 +17,4 @@ link: $(wildcard *.cpp)
 
 	$(CXX) $(CFLAGS) $(SOCKETLIBDIR)/*.cpp -c;
 	$(CXX) $(CFLAGS) $(BASICLIBDIR)/*.cpp -c;
-	$(CXX) $(CFLAGS) *.cpp *.o
+	$(CXX) $(CFLAGS) -o chatroomserver *.cpp *.o

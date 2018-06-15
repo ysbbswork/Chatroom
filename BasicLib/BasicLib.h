@@ -8,7 +8,7 @@
 #include "BasicLibTypes.h"
 #include "BasicLibTime.h"
 #include "BasicLibString.h"
-
+#include "minilogger.h"
 
 
 #endif

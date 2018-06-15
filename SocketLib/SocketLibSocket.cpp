@@ -3,7 +3,6 @@
 
 
 #include "SocketLibSocket.h"
-
 namespace SocketLib
 {
 
@@ -30,6 +29,7 @@ namespace SocketLib
             unsigned long mode = !p_blockmode;
             err = ioctlsocket( m_sock, FIONBIO, &mode );
         #else
+            
             // get the flags
             int flags = fcntl( m_sock, F_GETFL, 0 );
 

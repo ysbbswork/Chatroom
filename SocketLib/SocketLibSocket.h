@@ -6,7 +6,7 @@
 #include "BasicLib/BasicLib.h"
 #include "SocketLibTypes.h"
 #include "SocketLibErrors.h"
-
+#include <string.h>
 
 namespace SocketLib
 {

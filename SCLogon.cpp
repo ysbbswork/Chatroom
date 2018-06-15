@@ -32,9 +32,7 @@ void SCLogon::Handle( string p_data )
     UserDatabase::AddUser( conn, p_data );
     conn->Protocol().SendString( *conn, "Thank you for joining us, " + 
                                  p_data + newline );
-
     conn->AddHandler( new SCChat( *conn ) );
-	
 }
 
 

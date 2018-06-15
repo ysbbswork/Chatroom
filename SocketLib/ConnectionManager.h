@@ -127,6 +127,7 @@ NewConnection( DataSocket& p_socket )
     }
     else
     {
+
         //STL的push_back是值传递的(copy-by-value)此时conn不是是vector外面的那个，和里面的那个不是一个，
         m_connections.push_back( conn );
 
@@ -164,11 +165,12 @@ void ConnectionManager<protocol, defaulthandler>::Listen()
     int socks = 0;
     if( TotalConnections() > 0 )
     {
-        socks = m_set.Poll();
+        //socks=1;
+        socks = m_set.Poll(1);
     }
 
    
-    if( socks > 0 )
+    if( socks != 0 )
     {
 
 
@@ -180,7 +182,7 @@ void ConnectionManager<protocol, defaulthandler>::Listen()
         {
 
             c = itr++;
-
+            
             
             if( m_set.HasActivity( *c ) )
             {
