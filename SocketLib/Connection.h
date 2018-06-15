@@ -55,6 +55,7 @@ public:
     }
 
 
+
     void BufferData( const char* p_buffer, int p_size );
 
 

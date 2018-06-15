@@ -5,7 +5,15 @@
 #include "SCUserDB.h"
 #include "SCLogon.h"
 #include "SCChat.h"
+#ifdef WIN32
+#include<Windows.h>
+#pragma comment(lib,"ws2_32.lib")//VS in Windows need include ws2_32.dll
+
+#else
 #include <unistd.h>
+#endif // 
+
+
 int main()
 {	
 
@@ -23,7 +31,12 @@ int main()
 	{
 		lm.Listen();
 		cm.Manage();
-        usleep(100);
+        
+#ifdef WIN32
+		Sleep(1);
+#else
+		usleep(100);
+#endif // 
 	}
 
 }
